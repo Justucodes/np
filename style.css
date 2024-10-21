@@ -66,6 +66,9 @@ fieldset {
     word-spacing: 0.2rem;
     line-height: 1.5;
 }
+.under{
+    font-size: 200px;
+    
 @media (max-width: 768px) {
     .Headingh {
         font-size: 2.5rem;
@@ -87,7 +90,7 @@ fieldset {
         font-size: 18px;
     }
     .under{
-        font-size:58px;
+        font-size: 58px;
     }
 }
 
@@ -117,7 +120,7 @@ fieldset {
         height: 200px;
     }
     .under{
-        font-size:56px;
+        font-size: 56px;
     }
 }
 
@@ -143,7 +146,7 @@ fieldset {
         height: 150px;
     }
     .under{
-        font-size:54px;
+        font-size: 54px;
     }
 }
 
