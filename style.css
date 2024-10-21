@@ -66,8 +66,6 @@ fieldset {
     word-spacing: 0.2rem;
     line-height: 1.5;
 }
-.under{
-    font-size:60px;
 @media (max-width: 768px) {
     .Headingh {
         font-size: 2.5rem;
