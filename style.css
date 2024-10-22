@@ -65,8 +65,24 @@ fieldset {
     font-size: 20px;
     word-spacing: 0.2rem;
     line-height: 1.5;
-}
-    
+}
+
+.hero{
+    font-size: 35px;
+    color: snow;
+}
+
+.hamburger{
+    font-size: 20px;
+    color: white;
+    word-spacing: 0.2rem;
+}
+
+.anchor{
+    color: white;
+}
+
+
 @media (max-width: 768px) {
     .Headingh {
         font-size: 2.5rem;
@@ -87,11 +103,7 @@ fieldset {
         padding-right: 2rem;
         font-size: 18px;
     }
-    .under{
-        font-size: 58px;
-    }
 }
-
 
 @media (max-width: 576px) {
     .Headingh {
@@ -117,9 +129,6 @@ fieldset {
     .pfp {
         height: 200px;
     }
-    .under{
-        font-size: 56px;
-    }
 }
 
 @media (max-width: 375px) {
@@ -142,9 +151,6 @@ fieldset {
 
     .pfp {
         height: 150px;
-    }
-    .under{
-        font-size: 54px;
     }
 }
 
