@@ -250,13 +250,23 @@ body {
         padding: 1.5rem 2.5rem;
         animation: breathe 3s ease-in-out infinite;
     }
+    .nav a {
+        text-decoration: none;
+        color: black;
+        font-size: 1.3rem;
+        padding: 0.2rem 0.4rem;
+        border-radius: 1rem;
+        transition: all 0.3s ease;
+    }
 }
+    
+
 
 @media (max-width: 551px) {
     .nav a {
         text-decoration: none;
         color: black;
-        font-size: 1rem;
+        font-size: 0.9rem;
         padding: 0.5rem 1rem;
         border-radius: 1rem;
         transition: all 0.3s ease;
@@ -297,34 +307,17 @@ body {
         padding: 1.5rem 2.5rem;
         animation: breathe 3s ease-in-out infinite;
     }
-}
-
-@media (max-width: 399px) {
-    .head {
-        font-size: 2rem;
-        margin: 0.5rem 0;
-        font-weight: 700;
-    }
-
-    .home-text {
-        background-color: rgb(243, 212, 172);
-        color: rgb(126, 78, 15);
-        font-size: 1.3rem;
-        border-radius: 2rem;
-        padding: 1.5rem 2.5rem;
-        animation: breathe 3s ease-in-out infinite;
-    }
     .nav a {
         text-decoration: none;
         color: black;
-        font-size: 0.9rem;
-        padding: 0.2rem 0.1rem;
+        font-size: 0.8rem;
+        padding: 0.2rem 0.4rem;
         border-radius: 1rem;
         transition: all 0.3s ease;
     }
 }
 
-@media (max-width: 356px) {
+@media (max-width: 399px) {
     .head {
         font-size: 2rem;
         margin: 0.5rem 0;
@@ -342,13 +335,53 @@ body {
     .nav a {
         text-decoration: none;
         color: black;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
+        padding: 0.2rem 0.1rem;
+        border-radius: 1rem;
+        transition: all 0.3s ease;
+    }
+}
+
+@media (max-width: 359px) {
+    .head {
+        font-size: 2rem;
+        margin: 0.5rem 0;
+        font-weight: 700;
+    }
+
+    .home-text {
+        background-color: rgb(243, 212, 172);
+        color: rgb(126, 78, 15);
+        font-size: 1.2rem;
+        border-radius: 2rem;
+        padding: 1.5rem 2.5rem;
+        animation: breathe 3s ease-in-out infinite;
+    }
+    .nav a {
+        text-decoration: none;
+        color: black;
+        font-size: 0.8rem;
         padding: 0.2rem 0.00001rem;
         border-radius: 1rem;
         transition: all 0.3s ease;
     }
 }
 
+@media (max-width: 346px) {
+    .head {
+        font-size: 1.9rem;
+        margin: 0.5rem 0;
+        font-weight: 700;
+    }
+    .nav a {
+        text-decoration: none;
+        color: black;
+        font-size: 0.7rem;
+        padding: 0.2rem 0rem;
+        border-radius: 1rem;
+        transition: all 0.3s ease;
+    }
+}
 
 
 
