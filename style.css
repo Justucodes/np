@@ -1,5 +1,3 @@
-
-
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
@@ -117,8 +115,6 @@ body {
     color: white;
 }
 
-/* ... your existing CSS ... */
-
 #projects {
     padding: 4rem 2rem;
     text-align: center;
@@ -188,8 +184,6 @@ body {
 .project-card a:hover {
     background-color: darkred;
 }
-
-/* ... your existing media queries ... */
 
 #contact {
     padding: 4rem 2rem;
