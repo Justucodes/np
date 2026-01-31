@@ -1153,57 +1153,240 @@
 </html> -->
 
 
-        <!DOCTYPE html>
+       <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ghanti by Justin</title>
-    <style>
-        body{
-            background-color: #1c95d2; 
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
-            color: white;
-            padding-top: 10px;
-        }
-        .sound-image {
-            cursor: pointer; 
-            width: 500px; 
-            height: auto;
-        }
-        body{
-            line-height: 16px;
-        }
-        @media screen and (max-width: 500px) {
-            .sound-image{
-                width : 200px;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ghanti </title>
+
+<style>
+:root {
+    --bg: #1c95d2;
+    --white: #ffffff;
+    --danger: #ff4d4d;
+    --dark: #222;
 }
-    </style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--white);
+    font-family: "Lucida Sans", Geneva, Verdana, sans-serif;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 16px;
+    text-align: center;
+    z-index: 10;
+}
+
+.header h3 {
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    margin: 0;
+    opacity: 0.9;
+}
+
+.header h1 {
+    font-size: clamp(2rem, 6vw, 3rem);
+    margin: 4px 0 0;
+    font-weight: 800;
+}
+
+.main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 120px;
+    gap: 20px;
+}
+
+.sound-image {
+    width: min(90%, 420px);
+    cursor: pointer;
+    transform-origin: top center;
+}
+
+.ringing {
+    animation: ring 0.12s infinite alternate ease-in-out;
+}
+
+@keyframes ring {
+    0%   { transform: rotate(-8deg); }
+    100% { transform: rotate(8deg); }
+}
+
+.buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+button {
+    padding: 12px 20px;
+    font-size: 15px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    background: white;
+    color: #1c95d2;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+button:active {
+    transform: scale(0.95);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+#stopBtn {
+    background: var(--danger);
+    color: white;
+}
+
+#permissionBtn {
+    background: rgba(255,255,255,0.2);
+    color: white;
+    box-shadow: none;
+}
+
+@media (max-width: 360px) {
+    .main {
+        padding-top: 100px;
+    }
+}
+</style>
 </head>
-<body >
-    <center>
-        <h3>VOTE K MA?</h3>
-        <H1> GHANTI MA!</H1>
-        <br><br>
-        <img src="logo.png" alt="Click me to play sound" class="sound-image" onclick="playSound()"></center>
-    <audio id="audioPlayer" src="Small Ghanti Sound  मदर म घट क आवज  Temple Bell  Pooja Bell  Mandir Ki Ghanti  Best.mp3" preload="auto"></audio>
-    <script>
-        function playSound() {
-            const audio = document.getElementById('audioPlayer');
+
+<body>
+
+<div class="header">
+    <h3>VOTE K MA?</h3>
+    <h1>GHANTI MA!</h1>
+</div>
+
+<div class="main">
+    <img
+        src="logo.png"
+        alt="Ghanti"
+        class="sound-image"
+        id="ghanti"
+        onclick="playByClick()"
+    >
+
+    <div class="buttons">
+        <button id="stopBtn" onclick="stopSound()">Stop Sound</button>
+        <button id="permissionBtn" onclick="requestPermission()">Enable Shake</button>
+    </div>
+</div>
+
+<audio id="audioPlayer" src="Small Ghanti Sound  मदर म घट क आवज  Temple Bell  Pooja Bell  Mandir Ki Ghanti  Best.mp3"auto"></audio>
+
+<script>
+const audio = document.getElementById("audioPlayer");
+const ghanti = document.getElementById("ghanti");
+
+let playMode = null; 
+let isShaking = false;
+let lastShakeTime = 0;
+let shakeTimeout = null;
+
+const SHAKE_THRESHOLD = 15;
+const SHAKE_STOP_DELAY = 400;
+
+function startRinging() {
+    ghanti.classList.add("ringing");
+}
+
+function stopRinging() {
+    ghanti.classList.remove("ringing");
+}
+
+function playByClick() {
+    playMode = "click";
+    audio.currentTime = 0;
+    audio.play();
+    startRinging();
+}
+
+function stopSound() {
+    audio.pause();
+    audio.currentTime = 0;
+    playMode = null;
+    isShaking = false;
+    stopRinging();
+}
+
+audio.addEventListener("ended", stopRinging);
+
+function handleMotion(event) {
+    const acc = event.accelerationIncludingGravity;
+    if (!acc) return;
+
+    const strength =
+        Math.abs(acc.x) +
+        Math.abs(acc.y) +
+        Math.abs(acc.z);
+
+    if (strength > SHAKE_THRESHOLD) {
+        lastShakeTime = Date.now();
+
+        if (!isShaking) {
+            isShaking = true;
+            playMode = "shake";
             audio.currentTime = 0;
-            audio.play()
-                .catch(error => {
-                    console.error("Audio playback failed:", error);
-                    alert("Could not play sound. Ensure a user interaction started the process.");
-                });
+            audio.play();
+            startRinging();
         }
-    </script>
+
+        clearTimeout(shakeTimeout);
+        shakeTimeout = setTimeout(checkShakeStop, SHAKE_STOP_DELAY);
+    }
+}
+
+function checkShakeStop() {
+    if (Date.now() - lastShakeTime > SHAKE_STOP_DELAY) {
+        if (playMode === "shake") {
+            audio.pause();
+            audio.currentTime = 0;
+        }
+        isShaking = false;
+        playMode = null;
+        stopRinging();
+    }
+}
+
+function requestPermission() {
+    if (typeof DeviceMotionEvent.requestPermission === "function") {
+        DeviceMotionEvent.requestPermission().then(permission => {
+            if (permission === "granted") {
+                window.addEventListener("devicemotion", handleMotion);
+                document.getElementById("permissionBtn").style.display = "none";
+            }
+        });
+    }
+}
+
+if (typeof DeviceMotionEvent !== "undefined") {
+    if (typeof DeviceMotionEvent.requestPermission === "function") {
+        document.getElementById("permissionBtn").style.display = "inline-block";
+    } else {
+        window.addEventListener("devicemotion", handleMotion);
+    }
+}
+</script>
 
 </body>
 </html>
-
-
-
-
-
-
