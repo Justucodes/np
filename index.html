@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -915,6 +915,7 @@
                 </div>
             </div>
         </section>-->
+        <!--
 
         <section id="education" role="region" aria-labelledby="education-title">
             <div class="container">
@@ -1149,6 +1150,54 @@
         });
     </script>
 </body>
+</html> -->
+
+
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clickable Image Sound</title>
+    <style>
+        body{
+            background-color: #1c95d2; 
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
+            color: white;
+            padding-top: 10px;
+        }
+        .sound-image {
+            cursor: pointer; 
+            width: 500px; 
+            height: auto;
+        }
+        body{
+            line-height: 16px;
+        }
+    </style>
+</head>
+<body >
+    <center>
+        <h3>VOTE K MA?</h3>
+        <H1> GHANTI MA!</H1>
+        <br><br>
+        <img src="logo.png" alt="Click me to play sound" class="sound-image" onclick="playSound()"></center>
+    <audio id="audioPlayer" src="Small Ghanti Sound  मदर म घट क आवज  Temple Bell  Pooja Bell  Mandir Ki Ghanti  Best.mp3" preload="auto"></audio>
+    <script>
+        function playSound() {
+            const audio = document.getElementById('audioPlayer');
+            audio.currentTime = 0;
+            audio.play()
+                .catch(error => {
+                    console.error("Audio playback failed:", error);
+                    alert("Could not play sound. Ensure a user interaction started the process.");
+                });
+        }
+    </script>
+
+</body>
 </html>
+
+
 
 
